@@ -1075,15 +1075,38 @@ async function sendChatMessage() {
         messages: chatHistory
       })
     });
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
     removeTyping(typingId);
-    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response right now.";
+
+    if (!res.ok || data?.type === 'error') {
+      const apiMsg = data?.error?.message || data?.error || data?.message;
+      const errText = apiMsg
+        ? `Sorry — the assistant hit an error: ${apiMsg}`
+        : `Sorry — the assistant returned an error (HTTP ${res.status}).`;
+      appendMessage('ai', errText);
+      return;
+    }
+
+    const reply = data.content?.[0]?.text;
+    if (!reply) {
+      appendMessage('ai', "Sorry, I couldn't get a response right now. Please try again.");
+      return;
+    }
     chatHistory.push({ role: 'assistant', content: reply });
     appendMessage('ai', reply);
-  } catch {
+  } catch (err) {
     removeTyping(typingId);
     appendMessage('ai', "I'm having trouble connecting right now. Please try again.");
   }
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function appendMessage(who, text) {
@@ -1092,7 +1115,7 @@ function appendMessage(who, text) {
   div.className = `msg msg-${who}`;
   div.innerHTML = `
     <div class="msg-avatar">${who === 'ai' ? 'PS' : 'You'}</div>
-    <div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+    <div class="msg-bubble">${escapeHtml(text).replace(/\n/g,'<br>')}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
