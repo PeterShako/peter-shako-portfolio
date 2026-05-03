@@ -823,9 +823,6 @@
   </p>
 </footer>
 
-<!-- ─── CONFIG (not tracked by Git — contains API key) ───────── -->
-<script src="config.js"></script>
-
 <!-- ─── DATA FILES ────────────────────────────────────────────── -->
 <script src="data/videos.js"></script>
 <script src="data/photos.js"></script>
@@ -985,8 +982,11 @@ loadGitHub();
 
 // ════════════════════════════════════════════════
 //  AI CHAT — Claude API via Anthropic
-//  API key is loaded from config.js (not tracked by Git)
 // ════════════════════════════════════════════════
+
+// ▼▼▼ PASTE YOUR ANTHROPIC API KEY HERE (between the quotes) ▼▼▼
+const ANTHROPIC_API_KEY = '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';
+// ▲▲▲ ─────────────────────────────────────────────────────── ▲▲▲
 
 const PETER_CONTEXT = `
 You are an AI assistant for Peter Shako's portfolio website. You speak as his knowledgeable assistant — warm, direct, and never robotic.
