@@ -981,12 +981,9 @@ async function loadGitHub() {
 loadGitHub();
 
 // ════════════════════════════════════════════════
-//  AI CHAT — Claude API via Anthropic
+//  AI CHAT — Claude API via Netlify Function
+//  API key is stored in Netlify environment variables
 // ════════════════════════════════════════════════
-
-// ▼▼▼ PASTE YOUR ANTHROPIC API KEY HERE (between the quotes) ▼▼▼
-const ANTHROPIC_API_KEY = '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';
-// ▲▲▲ ─────────────────────────────────────────────────────── ▲▲▲
 
 const PETER_CONTEXT = `
 You are an AI assistant for Peter Shako's portfolio website. You speak as his knowledgeable assistant — warm, direct, and never robotic.
@@ -1070,17 +1067,10 @@ async function sendChatMessage() {
   const typingId = appendTyping();
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/.netlify/functions/chat', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-calls': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
         system: PETER_CONTEXT,
         messages: chatHistory
       })
