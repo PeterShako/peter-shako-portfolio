@@ -29,13 +29,12 @@ export default async function handler(req, res) {
         'x-api-key': process.env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5', // Updated to latest fast model
+            body: JSON.stringify({
+        model: 'claude-haiku-4-5',
         max_tokens: 1024,
-        // The system prompt is now defined server-side for better security/control
-        system: "You are an AI assistant for Peter Shako's portfolio. You are warm, direct, and act as a smart friend over coffee. Use the provided context to answer questions about his broadcast experience, Python/C coding, and his work with the Ogiek community.",
+        system: PETER_CONTEXT, // Use the full detailed string here
         messages: messages,
-      }),
+        }),
     });
 
     const data = await response.json();
