@@ -1054,7 +1054,158 @@ Do not make up any information not listed above. If asked something outside this
 `;
 
 <script>
-// ... (Keep your existing VIDEO TABS, MODAL, PHOTO, and GITHUB code here) ...
+// ════════════════════════════════════════════════
+//  VIDEO TABS
+// ════════════════════════════════════════════════
+const TAB_MAP = {
+  director: 'director',
+  producer: 'producer',
+  editor:   'editor',
+  camera:   'camera',
+  lighting: 'lighting',
+  anchor:   'anchor',
+};
+
+function buildVideoGrid(videos, role) {
+  if (!videos || !videos.length) {
+    return `<p class="error-msg">No videos in this category yet.</p>`;
+  }
+  return `<div class="video-grid">` +
+    videos.map(v => {
+      const thumb = `https://img.youtube.com/vi/${v.id}/mqdefault.jpg`;
+      return `
+        <div class="video-card" onclick="openVideo('${v.id}','${role}')">
+          <div class="video-thumb">
+            <img src="${thumb}" alt="${v.title}" loading="lazy" />
+            <div class="play-overlay">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="yt-badge">YT</span>
+          </div>
+          <div class="video-info">
+            <span class="video-role">${role}</span>
+            <span class="video-ext">↗ YouTube</span>
+          </div>
+        </div>`;
+    }).join('') + `</div>`;
+}
+
+Object.keys(TAB_MAP).forEach(key => {
+  const data = VIDEOS[key] || [];
+  const label = key.charAt(0).toUpperCase() + key.slice(1);
+  document.getElementById('tab-' + key).innerHTML = buildVideoGrid(data, label);
+});
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ════════════════════════════════════════════════
+//  VIDEO MODAL
+// ════════════════════════════════════════════════
+const videoModal   = document.getElementById('video-modal');
+const modalIframe  = document.getElementById('modal-iframe');
+const modalRoleLabel = document.getElementById('modal-role-label');
+
+function openVideo(id, role) {
+  modalIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+  modalRoleLabel.textContent = role;
+  videoModal.classList.add('open');
+}
+
+document.getElementById('modal-close-btn').onclick = closeVideoModal;
+videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideoModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
+
+function closeVideoModal() {
+  videoModal.classList.remove('open');
+  modalIframe.src = '';
+}
+
+// ════════════════════════════════════════════════
+//  PHOTO GALLERY
+// ════════════════════════════════════════════════
+const photoGrid  = document.getElementById('photo-grid');
+const photoEmpty = document.getElementById('photo-empty');
+const photoModal = document.getElementById('photo-modal');
+const photoModalImg = document.getElementById('photo-modal-img');
+let currentPhotoIndex = 0;
+
+function buildGallery() {
+  if (!PHOTOS || !PHOTOS.length) {
+    photoGrid.style.display = 'none';
+    photoEmpty.style.display = 'block';
+    return;
+  }
+  photoGrid.innerHTML = PHOTOS.map((p, i) => `
+    <div class="photo-item" onclick="openPhoto(${i})">
+      <img src="${p.src}" alt="${p.caption || ''}" loading="lazy" />
+      ${p.caption ? `<div class="photo-caption">${p.caption}</div>` : ''}
+    </div>`).join('');
+}
+
+function openPhoto(index) {
+  currentPhotoIndex = index;
+  photoModalImg.src = PHOTOS[index].src;
+  photoModalImg.alt = PHOTOS[index].caption || '';
+  photoModal.classList.add('open');
+}
+
+document.getElementById('photo-modal-close').onclick = () => photoModal.classList.remove('open');
+document.getElementById('photo-prev').onclick = () => openPhoto((currentPhotoIndex - 1 + PHOTOS.length) % PHOTOS.length);
+document.getElementById('photo-next').onclick = () => openPhoto((currentPhotoIndex + 1) % PHOTOS.length);
+photoModal.addEventListener('click', e => { if (e.target === photoModal) photoModal.classList.remove('open'); });
+
+if (typeof PHOTOS !== 'undefined') {
+    buildGallery();
+}
+
+// ════════════════════════════════════════════════
+//  GITHUB REPOS
+// ════════════════════════════════════════════════
+const langColors = {
+  Python:'#3572A5', JavaScript:'#f1e05a', C:'#555', HTML:'#e34c26',
+  CSS:'#563d7c', Shell:'#89e051', TypeScript:'#2b7489', Lua:'#000080',
+  default:'#8b949e'
+};
+
+async function loadGitHub() {
+  const grid = document.getElementById('github-grid');
+  try {
+    const res = await fetch('https://api.github.com/users/PeterShako/repos?sort=updated&per_page=8');
+    if (!res.ok) throw new Error('GitHub API error');
+    const repos = await res.json();
+    if (!repos.length) {
+      grid.innerHTML = `<p class="error-msg">No public repositories found.</p>`;
+      return;
+    }
+    grid.innerHTML = repos.map(r => {
+      const color = langColors[r.language] || langColors.default;
+      const lang = r.language || 'N/A';
+      return `
+        <a href="${r.html_url}" target="_blank" class="github-card">
+          <div class="gh-name">${r.name}</div>
+          <div class="gh-desc">${r.description || 'No description provided.'}</div>
+          <div class="gh-meta">
+            <span class="gh-lang">
+              <span class="lang-dot" style="background:${color}"></span>${lang}
+            </span>
+            <span>⭐ ${r.stargazers_count}</span>
+            <span>🍴 ${r.forks_count}</span>
+          </div>
+        </a>`;
+    }).join('');
+  } catch (err) {
+    grid.innerHTML = `<p class="error-msg">Could not load repositories. <a href="https://github.com/PeterShako" target="_blank" style="color:var(--accent)">View on GitHub →</a></p>`;
+  }
+}
+
+loadGitHub();
 
 // ════════════════════════════════════════════════
 //  AI CHAT — Vercel Serverless Function
@@ -1074,7 +1225,6 @@ async function sendChatMessage() {
   const typingId = appendTyping();
 
   try {
-    // Corrected path for Vercel[cite: 1]
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1084,7 +1234,6 @@ async function sendChatMessage() {
     const data = await res.json();
     removeTyping(typingId);
 
-    // Properly handle the Anthropic error envelope
     if (!res.ok || data.type === "error") {
       const errorMsg = data.error?.message || "I'm having trouble connecting right now.";
       appendMessage('ai', errorMsg);
@@ -1106,7 +1255,6 @@ function escapeHTML(str) {
   return p.innerHTML;
 }
 
-// Fixed: Removed 'return id' which was causing the ReferenceError[cite: 1]
 function appendMessage(who, text) {
   const msgs = document.getElementById('chat-messages');
   const div = document.createElement('div');
@@ -1140,20 +1288,6 @@ function appendTyping() {
   msgs.scrollTop = msgs.scrollHeight;
   return id;
 }
-
-function removeTyping(id) {
-  document.getElementById(id)?.remove();
-}
-
-function askSuggestion(btn) {
-  document.getElementById('chat-input').value = btn.textContent;
-  sendChatMessage();
-}
-
-document.getElementById('chat-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') sendChatMessage();
-});
-</script>
 
 function removeTyping(id) {
   document.getElementById(id)?.remove();
