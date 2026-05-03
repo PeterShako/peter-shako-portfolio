@@ -1055,6 +1055,8 @@ Do not make up any information not listed above. If asked something outside this
 
 const chatHistory = [];
 
+<!-- Locate the script section at the bottom of index.html and replace these specific functions -->
+
 async function sendChatMessage() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
@@ -1067,51 +1069,52 @@ async function sendChatMessage() {
   const typingId = appendTyping();
 
   try {
-    const res = await fetch('/.netlify/functions/chat', {
+    // UPDATED: Path changed for Vercel deployment
+    const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        system: PETER_CONTEXT,
         messages: chatHistory
       })
     });
+
     const data = await res.json();
     removeTyping(typingId);
-    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response right now.";
+
+    // UPDATED: Handle Anthropic error envelope and status codes
+    if (!res.ok || data.type === "error") {
+      const errorMsg = data.error?.message || "I'm having trouble connecting right now.";
+      appendMessage('ai', errorMsg);
+      return;
+    }
+
+    const reply = data.content?.[0]?.text || "I couldn't get a response right now.";
     chatHistory.push({ role: 'assistant', content: reply });
     appendMessage('ai', reply);
-  } catch {
+  } catch (err) {
     removeTyping(typingId);
     appendMessage('ai', "I'm having trouble connecting right now. Please try again.");
   }
+}
+
+// UPDATED: Added HTML escaping to prevent XSS attacks
+function escapeHTML(str) {
+  const p = document.createElement('p');
+  p.textContent = str;
+  return p.innerHTML;
 }
 
 function appendMessage(who, text) {
   const msgs = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = `msg msg-${who}`;
+  
+  // Safety first: escape the text before rendering, then restore line breaks
+  const safeText = escapeHTML(text).replace(/\n/g, '<br>');
+  
   div.innerHTML = `
     <div class="msg-avatar">${who === 'ai' ? 'PS' : 'You'}</div>
-    <div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function appendTyping() {
-  const msgs = document.getElementById('chat-messages');
-  const id = 'typing-' + Date.now();
-  const div = document.createElement('div');
-  div.className = 'msg msg-ai';
-  div.id = id;
-  div.innerHTML = `
-    <div class="msg-avatar">PS</div>
-    <div class="msg-bubble">
-      <div class="typing-indicator">
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-      </div>
-    </div>`;
+    <div class="msg-bubble">${safeText}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
   return id;
