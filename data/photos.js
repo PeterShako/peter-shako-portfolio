@@ -14,4 +14,5 @@ const PHOTOS = [
   // { src: "https://i.imgur.com/yourlink.jpg", caption: "Behind the scenes", aspect: "landscape" },
 
   // Add your photos below this line ↓
+  { src: "assets/photos/bruce.jpeg", caption: "Behind the scenes", aspect: "potrait" },
 ];
