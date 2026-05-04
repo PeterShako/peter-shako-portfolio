@@ -14,6 +14,6 @@ const PHOTOS = [
   // { src: "https://i.imgur.com/yourlink.jpg", caption: "Behind the scenes", aspect: "landscape" },
 
   // Add your photos below this line ↓
-  { src: "assets/photos/bruce.jpeg", caption: "Behind the scenes", aspect: "portrait" },
+  { src: "assets/photos/bruce.jpeg", caption: "Kalasha 2026", aspect: "portrait" },
   { src: "assets/photos/camera.jpg", caption: "On set at UNC TV", aspect: "landscape" },
 ];
