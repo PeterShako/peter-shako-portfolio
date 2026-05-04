@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peter Shako — Creative Producer & Developer</title>
+  <title>Peter Shako - Creative Producer & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ─── TOKENS ─────────────────────────────────────────────── */
+    /* TOKENS */
     :root {
       --bg:       #0d0d0d;
       --surface:  #141414;
@@ -15,7 +15,7 @@
       --muted:    #555;
       --text:     #e8e4dc;
       --sub:      #999;
-      --accent:   #c8a96e;   /* warm gold — only accent colour */
+      --accent:   #c8a96e; 
       --accent2:  #8b6f3a;
       --red:      #ff4e4e;
       --font-serif: 'DM Serif Display', Georgia, serif;
@@ -24,7 +24,7 @@
       --transition: 0.2s ease;
     }
 
-    /* ─── RESET ──────────────────────────────────────────────── */
+    /* RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -39,7 +39,7 @@
     img { display: block; max-width: 100%; }
     button { cursor: pointer; border: none; background: none; font: inherit; }
 
-    /* ─── NAV ─────────────────────────────────────────────────── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -67,7 +67,7 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ─── HERO ─────────────────────────────────────────────────── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex; flex-direction: column;
@@ -137,7 +137,7 @@
       background: var(--muted);
     }
 
-    /* ─── SECTION SHELL ──────────────────────────────────────── */
+    /* SECTION SHELL */
     section {
       padding: 5rem 2rem;
       max-width: 1100px;
@@ -162,7 +162,7 @@
       margin: 0;
     }
 
-    /* ─── ABOUT ──────────────────────────────────────────────── */
+    /* ABOUT */
     #about .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -203,7 +203,7 @@
     }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ─── VIDEOS ─────────────────────────────────────────────── */
+    /* VIDEOS */
     #videos .tab-bar {
       display: flex; gap: 0; flex-wrap: wrap;
       border-bottom: 1px solid var(--border);
@@ -275,7 +275,7 @@
       font-size: 0.7rem; color: var(--muted);
     }
 
-    /* ─── VIDEO MODAL ────────────────────────────────────────── */
+    /* VIDEO MODAL */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(0,0,0,0.88);
@@ -317,7 +317,7 @@
       border: none;
     }
 
-    /* ─── PHOTOS ─────────────────────────────────────────────── */
+    /* PHOTOS */
     #photos .upload-hint {
       font-size: 0.82rem;
       color: var(--muted);
@@ -388,7 +388,7 @@
     #photo-prev { left: 1rem; }
     #photo-next { right: 1rem; }
 
-    /* ─── GITHUB ─────────────────────────────────────────────── */
+    /* GITHUB */
     #github .github-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -436,7 +436,7 @@
     }
     .github-load-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ─── CV ─────────────────────────────────────────────────── */
+    /* CV */
     #cv .cv-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -453,7 +453,7 @@
     .cv-info p { color: var(--sub); font-size: 0.9rem; max-width: 480px; }
     .cv-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-    /* ─── AI CHAT ─────────────────────────────────────────────── */
+    /* AI CHAT */
     #chat .chat-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -557,7 +557,7 @@
       border-color: var(--accent); color: var(--accent);
     }
 
-    /* ─── FOOTER ─────────────────────────────────────────────── */
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem;
@@ -568,11 +568,11 @@
     footer a { color: var(--sub); transition: color var(--transition); }
     footer a:hover { color: var(--accent); }
 
-    /* ─── LOADER ─────────────────────────────────────────────── */
+    /* LOADER */
     .loader { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.82rem; }
     .error-msg { color: var(--red); text-align: center; padding: 1rem; font-size: 0.82rem; }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 680px) {
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
@@ -585,7 +585,7 @@
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#hero">Peter <span>Shako</span></a>
   <ul class="nav-links">
@@ -594,13 +594,13 @@
     <li><a href="#photos">Photos</a></li>
     <li><a href="#github">Code</a></li>
     <li><a href="#cv">CV</a></li>
-    <li><a href="#chat">Ask Peter</a></li>
+    <li><a href="#chat">Ask Shako</a></li>
   </ul>
 </nav>
 
-<!-- ─── HERO ──────────────────────────────────────────────────── -->
+<!-- HERO -->
 <section id="hero">
-  <p class="hero-label">Portfolio — Nairobi, Kenya</p>
+  <p class="hero-label">Portfolio - Nairobi, Kenya</p>
   <h1 class="hero-name">Peter<br><em>Shako</em></h1>
   <p class="hero-tagline">
     Creative Producer &amp; Developer at the intersection of broadcast
@@ -616,7 +616,7 @@
 
 <hr class="divider" />
 
-<!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+<!-- ABOUT -->
 <section id="about">
   <p class="section-label">About</p>
   <h2 class="section-title">The Story Behind the Frame</h2>
@@ -637,7 +637,7 @@
         and approach every problem with a forward-thinking mindset.
       </p>
       <p>
-        Active member of the <strong>Vuka Film Fest</strong> committee — curating
+        Active member of the <strong>Vuka Film Fest</strong> committee, curating
         and showcasing exceptional student cinema.
       </p>
       <div class="social-links">
@@ -682,10 +682,10 @@
 
 <hr class="divider" />
 
-<!-- ─── VIDEOS ────────────────────────────────────────────────── -->
+<!-- VIDEOS -->
 <section id="videos">
   <p class="section-label">Broadcast Work</p>
-  <h2 class="section-title">UNC TV — Published Work</h2>
+  <h2 class="section-title">UNC TV - Published Work</h2>
 
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="director">Director</button>
@@ -719,13 +719,13 @@
 
 <hr class="divider" />
 
-<!-- ─── PHOTOS ────────────────────────────────────────────────── -->
+<!-- PHOTOS -->
 <section id="photos">
   <p class="section-label">Gallery</p>
   <h2 class="section-title">Behind the Lens</h2>
   <div class="upload-hint">
     📁 To add photos: put image files in <code>assets/photos/</code> then add
-    entries to <code>data/photos.js</code> — no code knowledge needed.
+    entries to <code>data/photos.js</code>
   </div>
   <div id="photo-grid" class="photo-grid"></div>
   <div id="photo-empty" class="empty-gallery" style="display:none">
@@ -744,12 +744,12 @@
 
 <hr class="divider" />
 
-<!-- ─── GITHUB ────────────────────────────────────────────────── -->
+<!-- GITHUB -->
 <section id="github">
   <p class="section-label">Code</p>
   <h2 class="section-title">GitHub Projects</h2>
   <div class="github-grid" id="github-grid">
-    <div class="loader" style="grid-column:1/-1">Loading repositories…</div>
+    <div class="loader" style="grid-column:1/-1">Loading repositories...</div>
   </div>
   <div class="github-load-more">
     <a href="https://github.com/PeterShako" target="_blank" class="github-load-btn">
@@ -760,13 +760,13 @@
 
 <hr class="divider" />
 
-<!-- ─── CV ────────────────────────────────────────────────────── -->
+<!-- CV -->
 <section id="cv">
   <p class="section-label">Curriculum Vitae</p>
   <h2 class="section-title">Download My CV</h2>
   <div class="cv-card">
     <div class="cv-info">
-      <h3>Peter Shako — CV</h3>
+      <h3>Peter Shako - CV</h3>
       <p>
         Broadcast Producer, Director, Editor, and Developer. University of Nairobi
         final-year student with four years of live production experience at UNC TV.
@@ -782,121 +782,108 @@
 
 <hr class="divider" />
 
-<!-- ─── AI CHAT ───────────────────────────────────────────────── -->
+<!-- AI CHAT -->
 <section id="chat">
   <p class="section-label">AI Assistant</p>
-  <h2 class="section-title">Ask Peter — Powered by Claude</h2>
+  <h2 class="section-title">Ask Shako - Powered by Gemini</h2>
   <div class="chat-wrap">
     <div class="chat-topbar">
       <div class="chat-dot"></div>
-      <span class="chat-name">Peter's AI Assistant</span>
-      <span class="chat-sub">Powered by Claude · Ask me anything about Peter</span>
+      <span class="chat-name">Shako's AI Assistant</span>
+      <span class="chat-sub">Powered by Gemini · Ask me anything about Shako</span>
     </div>
     <div class="chat-messages" id="chat-messages">
       <div class="msg msg-ai">
-        <div class="msg-avatar">PS</div>
+        <div class="msg-avatar">S</div>
         <div class="msg-bubble">
-          Hi! I'm an AI trained on Peter's background, work, and skills. Ask me anything
+          Hi! I'm an AI trained on Shako's background, work, and skills. Ask me anything
           about his broadcast experience, tech projects, or what he's looking for next.
         </div>
       </div>
     </div>
     <div class="chat-suggestions">
-      <button class="suggestion-btn" onclick="askSuggestion(this)">What has Peter directed?</button>
+      <button class="suggestion-btn" onclick="askSuggestion(this)">What has Shako directed?</button>
       <button class="suggestion-btn" onclick="askSuggestion(this)">Tell me about his Ogiek documentary</button>
       <button class="suggestion-btn" onclick="askSuggestion(this)">What are his tech skills?</button>
       <button class="suggestion-btn" onclick="askSuggestion(this)">What's his aviation ambition?</button>
       <button class="suggestion-btn" onclick="askSuggestion(this)">Is he open to work?</button>
     </div>
     <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Ask about Peter's work, skills, or experience…" />
+      <input type="text" id="chat-input" placeholder="Ask about Shako's work, skills, or experience..." />
       <button class="chat-send" onclick="sendChatMessage()" title="Send">&#9658;</button>
     </div>
   </div>
 </section>
 
-<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 Peter Shako · Nairobi, Kenya ·
+  <p>© 2026 Peter Shako · Nairobi, Kenya ·
     <a href="https://github.com/PeterShako" target="_blank">GitHub</a> ·
     <a href="https://www.linkedin.com/in/peter-shako-07335a315/" target="_blank">LinkedIn</a>
   </p>
 </footer>
 
-<!-- ─── DATA FILES ────────────────────────────────────────────── -->
+<!-- DATA FILES -->
 <script src="data/videos.js"></script>
 <script src="data/photos.js"></script>
 
-<!-- ─── SCRIPTS ──────────────────────────────────────────────── -->
+<!-- SCRIPTS -->
 <script>
 // ════════════════════════════════════════════════
-//  AI CHAT — Claude API via Vercel Function
+//  AI CHAT LOGIC via Vercel Function
 // ════════════════════════════════════════════════
 
-const PETER_CONTEXT = `
-You are an AI assistant for Peter Shako's portfolio website. You speak as his knowledgeable assistant — warm, direct, and never robotic.
-Answer questions based ONLY on the facts below. Be conversational but precise. Keep answers 2–4 sentences unless the user asks for more detail.
+const SHAKO_CONTEXT = `
+You are an AI assistant for Shako's portfolio website. You speak as his knowledgeable assistant: warm, direct, and never robotic.
+Answer questions based ONLY on the facts below. Be conversational but precise. Keep answers 2 to 4 sentences unless the user asks for more detail.
 
-═══ IDENTITY ═══
-- Full name: Peter Shako
-- Based in Nairobi, Kenya
-- Final-year student (graduating 2026), Bachelor of Arts in Broadcast Production, University of Nairobi
-- Student ID: K62/1109/2022, Department of Journalism and Mass Communication
-- He describes himself as a "Polymathic Storyteller" — equally at home on a film set, in a terminal, or in the field doing ethnographic research
+CRITICAL RULES:
+1. Refer to him exclusively as "Shako".
+2. Never use em dashes.
+3. Avoid corporate jargon, buzzwords, and clichés.
+4. Write like a real person, professional yet natural, as if explaining something to a smart friend over coffee.
+5. Tell the bare truth. Do not sugar-coat. If discussing learning, suggest the best proven option.
+6. ABSOLUTELY NEVER mention or discuss the project "Concrete Roses" under any circumstances.
 
-═══ UNC TV (University of Nairobi Channel) ═══
-- Peter has been active at UNC TV since his first year in 2022 — a rare four-year continuous commitment
-- By his final semester he was a senior contributor capable of mentoring incoming students
-- Published roles: Director (19 works), Producer (25+ works), Editor/Color Grading/Motion Graphics (20+ works), Camera Operator (25+ works), Lighting & Sound (3 works), News Anchor (1 work)
-- He doesn't just fill roles — he engineers productions end-to-end
+═══ IDENTITY & DEMOGRAPHICS ═══
+- Full name: Peter Shako Munialo (prefers Shako).
+- Born: April 6, 2004.
+- Based in Nairobi, Kenya.
+- Religion: Muslim. His faith provides an ethical framework for truth-telling and representing marginalized voices.
 
-═══ ACADEMIC CAPSTONE ═══
-- Final year documentary research project: "The Last Guardians: Climate Displacement and the Chepkitale Ogiek"
-- Focuses on the Ogiek community of Mt. Elgon, Bungoma County, Kenya
-- Core argument: indigenous Ogiek are not threats to the ecosystem — they are its most effective protectors
-- The project examines how they face displacement under the guise of conservation, and documents their traditional land rights vs. modern climate realities
-- Requires ethnographic fieldwork, cultural sensitivity, and translating complex legal/environmental issues into visual narrative
+═══ ACADEMICS & TRAINING ═══
+- Final-year student (graduating 2026), Bachelor of Arts in Broadcast Production, University of Nairobi (ID: K62/1109/2022).
+- Preparing to resit the KCSE as a private candidate in 2026.
+- Approved for a scholarship with IBS Americas (Feb 2026).
+- Completed AI training at Moringa School (Part Time course) and Techsavanna Software Institute (AI Bootcamp) in early 2026.
+
+═══ UNC TV & PRODUCTION EXPERIENCE ═══
+- Active at UNC TV since 2022 (four-year commitment).
+- Published roles: Director (19 works), Producer (25+ works), Editor/Color (20+ works), Camera (25+ works), Lighting/Sound (3 works), News Anchor (1 work).
+- Vuka Film Fest committee member, showcasing the best final-year student films.
+- Post-production toolkit: Adobe Premiere Pro, DaVinci Resolve, iZotope RX, CapCut, StoryHero, TurboScribe.
+
+═══ ACADEMIC CAPSTONE (DOCUMENTARY) ═══
+- Title: "The Last Guardians: Climate Displacement and the Chepkitale Ogiek"
+- Focus: The Ogiek community of Mt. Elgon, Bungoma County. Documents their traditional land rights vs modern climate realities.
+- Filming scheduled in Bungoma from April 1 to April 5, 2026.
+- Working with community activist Peter Kitelo for research objectives.
+- Shares professional interests in film editing and doc production with Safia.
 
 ═══ TECHNICAL COMPUTING ═══
-- Runs Arch Linux as primary OS — chosen for granular control, not convenience
-- Dual-boot setup: Arch Linux + Windows 11 on an ASUS TUF Gaming A15 with two NVMe drives, KDE Plasma desktop
-- Has manually configured disk partitioning, X Window System/Wayland, AUR package management, and hardware optimisation
-- Programming: Python (scripting, automation, moving into AI libraries and data visualisation) and C (for low-level understanding of memory management and hardware interaction)
-- Cybersecurity interest: network protocols, encryption, ethics of digital surveillance — driven by protecting digital assets in modern media
-
-═══ MEDIA PRODUCTION TOOLS ═══
-- Video editing: Adobe Premiere Pro (narrative flow) and DaVinci Resolve (colour grading)
-- Audio: iZotope RX — field recording repair, wind noise removal, spectral repair, broadcast-safe levels
-- He doesn't just "edit" — he engineers the technical pipeline from raw footage to broadcast-ready output
-
-═══ VUKA FILM FEST ═══
-- Committee member for the Vuka Film Fest
-- Applies professional broadcast standards to curate the best final-year student films
-- Dedicated to raising the bar for the next generation of Kenyan filmmakers
-
-═══ PERSONAL IDENTITY ═══
-- Muslim — his faith provides an ethical framework centred on truth-telling, integrity, and representing marginalised voices
-- This directly informs his documentary work and how he approaches stories about communities like the Ogiek
+- OS: Arch Linux (manual install) dual-booted with Windows 11 on an ASUS TUF Gaming A15.
+- Programming: Python, C.
+- Cybersecurity interest: network protocols, encryption, ethics of digital surveillance.
 
 ═══ AVIATION AMBITION ═══
-- Long-term dream: to pilot the Airbus A380-800
-- Actively follows aviation industry developments — engine efficiency, international flight school logistics
-- His "pilot's mindset" (checklists, precision, situational awareness) directly informs how he manages complex film sets and debugging sessions
+- Long-term dream: To pilot an Airbus A380-800. 
+- Actively explores self-sponsored flight school routes and aviation handbooks.
 
-═══ INTERESTS & COGNITIVE MODELS ═══
-- Arsenal FC fan and tactical thinker — studies squad resource management, spatial overloads, and FPL data analysis as a form of systems thinking
-- Football Manager / FC 26 player — uses these as simulations for strategic decision-making
-- Combat sports: trains in Muay Thai, MMA, and Boxing — builds physical discipline, resilience under pressure, and strategic patience that transfers directly to long-form editing and debugging
-
-═══ COMMUNICATION STYLE ═══
-- Values directness and truth over corporate sugar-coating
-- Prefers the tone of "a smart friend over coffee" — no buzzwords, no clichés
-- Technical clarity: can explain Linux kernels and documentary ethics in the same conversation without switching registers
-
-═══ SOCIAL & CONTACT ═══
-- GitHub: https://github.com/PeterShako
-- LinkedIn: https://www.linkedin.com/in/peter-shako-07335a315/
-- Open to: internships, graduate positions, and freelance projects in both broadcast production and software/tech development
+═══ INTERESTS & FINANCIALS ═══
+- Arsenal FC fan, plays Football Manager & FC 26 (team: Netsix and chill FC) to study tactics.
+- Combat sports: Seeking training in Muay Thai, MMA, and Boxing in Nairobi.
+- Gaming: Active on Steam, Twitch, follows KONAMI, Blizzard, Activision.
+- Finance: Engages in financial trading with CDS accounts at Kingdom Securities and AIB-AXYS Africa.
 
 Do not make up any information not listed above. If asked something outside this context, say you don't have that detail but invite them to reach out via LinkedIn or GitHub.
 `;
@@ -1080,7 +1067,7 @@ async function sendChatMessage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
           messages: chatHistory,
-          system: PETER_CONTEXT // Added back here to ensure the backend receives it
+          system: SHAKO_CONTEXT
       })
     });
 
@@ -1116,7 +1103,7 @@ function appendMessage(who, text) {
   const safeText = escapeHTML(text).replace(/\n/g, '<br>');
   
   div.innerHTML = `
-    <div class="msg-avatar">${who === 'ai' ? 'PS' : 'You'}</div>
+    <div class="msg-avatar">${who === 'ai' ? 'S' : 'You'}</div>
     <div class="msg-bubble">${safeText}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
@@ -1129,7 +1116,7 @@ function appendTyping() {
   div.className = 'msg msg-ai';
   div.id = id;
   div.innerHTML = `
-    <div class="msg-avatar">PS</div>
+    <div class="msg-avatar">S</div>
     <div class="msg-bubble">
       <div class="typing-indicator">
         <div class="typing-dot"></div>
