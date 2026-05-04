@@ -40,6 +40,10 @@ export default async function handler(req, res) {
           parts: [{ text: system || "You are an AI assistant." }]
         },
         contents: contents,
+        // Removed the limit: Set to the model's absolute maximum
+        generationConfig: {
+            maxOutputTokens: 8192, 
+        }
       })
     });
 
