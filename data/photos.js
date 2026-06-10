@@ -24,5 +24,5 @@ const PHOTOS = [
   { src: "assets/photos/cert5.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
   { src: "assets/photos/cert6.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
   { src: "assets/photos/cert7.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
-  
+  { src: "assets/photos/moringa.jpg", caption: "MORINGA", aspect: "landscape" },
 ];
