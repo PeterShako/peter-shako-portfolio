@@ -16,7 +16,7 @@ const PHOTOS = [
   // Add your photos below this line ↓
   { src: "assets/photos/bruce.jpeg", caption: "Kalasha 2026", aspect: "portrait" },
   { src: "assets/photos/camera.jpg", caption: "On set at UNC TV", aspect: "landscape" },
-  { src: "assets/photos/emobilis.jpg", caption: "Directing a shoot", aspect: "portrait" },
+  { src: "assets/photos/emobilis.jpg", caption: "EMOBILIS", aspect: "landscape" },
   
   
 ];
