@@ -16,7 +16,13 @@ const PHOTOS = [
   // Add your photos below this line ↓
   { src: "assets/photos/bruce.jpeg", caption: "Kalasha 2026", aspect: "portrait" },
   { src: "assets/photos/camera.jpg", caption: "On set at UNC TV", aspect: "landscape" },
-  { src: "assets/photos/emobilis.jpg", caption: "EMOBILIS", aspect: "landscape" },
-  
+  { src: "assets/photos/emobilis.jpg", caption: "EMOBILIS", aspect: "portrait" },
+  { src: "assets/photos/cert1.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert2.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert3.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert4.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert5.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert6.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
+  { src: "assets/photos/cert7.jpg", caption: "VUKA FILM FESTIVAL", aspect: "landscape" },
   
 ];
