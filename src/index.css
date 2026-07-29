@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0b0c10;
+  --panel: #12141a;
+  --panel-2: #171a22;
+  --line: #262a35;
+  --coral: #d9565b;
+  --coral-2: #ff8a65;
+  --muted: #9aa0ac;
+  --cream: #f4f1ea;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: "DM Serif Display", Georgia, serif;
+}
+
+::selection {
+  background: var(--coral);
+  color: #10131a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coral);
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes bounceDot {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+.bounce-dot {
+  animation: bounceDot 1.2s infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
