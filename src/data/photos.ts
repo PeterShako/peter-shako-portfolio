@@ -7,7 +7,7 @@ export const PHOTOS: PhotoItem[] = [
   },
   {
     src: "/images/bruce.jpg",
-    caption: "Behind the scenes",
+    caption: "Kalasha 2026",
   },
   {
     src: "/images/camera.jpg",
@@ -49,5 +49,8 @@ export const PHOTOS: PhotoItem[] = [
     src: "/images/moringa.jpg",
     caption: "Moringa School AI Training Completion",
   },
-  
+   {
+    src: "/images/plpcert.png",
+    caption: "Power Learn Project Training Completion",
+  },
 ];
