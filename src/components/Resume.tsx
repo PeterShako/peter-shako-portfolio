@@ -29,6 +29,12 @@ const TIMELINE = [
     title: "BBC Camera Operator",
     desc: "Served as the BBC camera operator for the Future of Journalism Festival that took place at the University of Nairobi.",
   },
+  {
+    year: "September - October 2026",
+    title: "FreezeFrame Productions - Editor / Camera Operator",
+    desc: "Served as the editor and camera operator for FreezeFrame Productions, a production company that specializes in creating high-quality video content for clients.",
+  },
+
 ];
 
 export default function Resume() {
