@@ -50,6 +50,7 @@ export const VIDEOS: Record<string, VideoItem[]> = {
     { id: "8LHg_8EvEKw", title: "Producer" },
   ],
   editor: [
+    { id: "Bx09MJmWiU", title: "Editor / Color / Graphics" },
     { id: "zoNaR0WgZIg", title: "Editor / Color / Graphics" },
     { id: "rtmTYCgf0yU", title: "Editor / Color / Graphics" },
     { id: "LjwB7M26GFA", title: "Editor / Color / Graphics" },
@@ -65,6 +66,9 @@ export const VIDEOS: Record<string, VideoItem[]> = {
     { id: "y1W5qudJ3sU", title: "Editor / Color / Graphics" },
   ],
   camera: [
+    { id: "Bx09MJmWiU", title: "Camera" },
+    { id: "XwIHCXFS7Nk", title: "Camera" },
+    { id: "zoNaR0WgZIg", title: "Camera" },
     { id: "6sIH-9P9E9s", title: "Camera" },
     { id: "-407b92gEF0", title: "Camera" },
     { id: "qHLefidGP7M", title: "Camera" },
